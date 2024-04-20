@@ -1,5 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm'
-import { Room } from 'src/room/entities/room.entity'
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+
 @Entity()
 export class Hotels {
   @PrimaryGeneratedColumn('uuid')
@@ -13,7 +13,4 @@ export class Hotels {
 
   @Column({ length: 1000 })
   description: string
-
-  @OneToMany(() => Room, (room) => room.hotel)
-  rooms: Room[]
 }
