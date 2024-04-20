@@ -1,14 +1,25 @@
-// room.entity.ts
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm'
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  OneToMany,
+  JoinColumn,
+} from 'typeorm'
 import { Hotels } from 'src/hotel/entities/hotel.entity'
+import { Reservation } from 'src/reservation/entities/reservation.entity'
 
 @Entity({ name: 'rooms' })
 export class Room {
   @PrimaryGeneratedColumn('uuid')
   room_id: string
 
-  @ManyToOne(() => Hotels, (hotel) => hotel.rooms, { nullable: false })
+  @ManyToOne(() => Hotels, (hotel) => hotel.rooms)
+  @JoinColumn({ name: 'hotel_id' })
   hotel: Hotels
+
+  @OneToMany(() => Reservation, (reservation) => reservation.room)
+  reservations: Reservation[]
 
   @Column()
   quantity: number
