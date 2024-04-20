@@ -3,6 +3,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { HotelModule } from './hotel/hotel.module'
 import { Hotels } from './hotel/entities/hotel.entity'
+import { RoomModule } from './room/room.module'
+import { Room } from './room/entities/room.entity'
 
 @Module({
   imports: [
@@ -21,12 +23,13 @@ import { Hotels } from './hotel/entities/hotel.entity'
         connection: {
           options: `project=${configService.get<string>('ENDPOINT_ID')}`,
         },
-        entities: [Hotels],
+        entities: [Hotels, Room],
         synchronize: false,
       }),
       inject: [ConfigService],
     }),
     HotelModule,
+    RoomModule,
   ],
   controllers: [],
   providers: [],

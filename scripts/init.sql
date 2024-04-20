@@ -21,20 +21,17 @@ CREATE TABLE hotels (
     description TEXT
 );
 
--- Table for room types
-CREATE TABLE room_types (
-    type_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    type_name VARCHAR(100) NOT NULL,
-    description TEXT
-);
-
 -- Table for rooms
 CREATE TABLE rooms (
     room_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     hotel_id UUID REFERENCES hotels(hotel_id) ON DELETE CASCADE,
-    type_id UUID REFERENCES room_types(type_id),
+    quantity INT NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
-    description TEXT
+    description TEXT,
+    has_air_conditioning BOOLEAN DEFAULT false,
+    has_terrace BOOLEAN DEFAULT false, 
+    has_tv BOOLEAN DEFAULT false, 
+    has_wifi BOOLEAN DEFAULT false,
 );
 
 -- Table for reservations
