@@ -1,10 +1,4 @@
-import {
-  IsNotEmpty,
-  IsString,
-  MaxLength,
-  IsNumber,
-  IsPositive,
-} from 'class-validator'
+import { IsNotEmpty, IsString, MaxLength } from 'class-validator'
 
 export class CreateHotelDto {
   @IsString()
@@ -17,8 +11,8 @@ export class CreateHotelDto {
   @IsNotEmpty()
   location: string
 
-  @IsNumber()
-  @IsPositive()
+  @IsString()
+  @MaxLength(100, { message: 'Location is too long' })
   @IsNotEmpty()
-  price: number
+  description: string
 }
