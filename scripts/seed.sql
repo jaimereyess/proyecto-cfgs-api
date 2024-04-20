@@ -1,48 +1,16 @@
--- Create schema for our hotel reservation system
-CREATE SCHEMA hotel_reservation;
-SET search_path TO hotel_reservation;
+INSERT INTO users (username, email, password) VALUES
+    ('user1', 'user1@example.com', 'password1'),
+    ('user2', 'user2@example.com', 'password2'),
+    ('user3', 'user3@example.com', 'password3');
 
--- Enable UUID generation extension
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";  
-
--- Table for users
-CREATE TABLE users (
-    user_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    username VARCHAR(50) UNIQUE NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    password VARCHAR(100) NOT NULL
-);
-
--- Table for hotels
-CREATE TABLE hotels (
-    hotel_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    name VARCHAR(100) NOT NULL,
-    location VARCHAR(100) NOT NULL,
-    description TEXT
-);
-
-
-
--- Table for rooms
-CREATE TABLE rooms (
-    room_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    hotel_id UUID REFERENCES hotels(hotel_id) ON DELETE CASCADE,
-    quantity INT NOT NULL,
-    price DECIMAL(10, 2) NOT NULL,
-    description TEXT,
-    has_air_conditioning BOOLEAN DEFAULT false,
-    has_terrace BOOLEAN DEFAULT false, 
-    has_tv BOOLEAN DEFAULT false, 
-    has_wifi BOOLEAN DEFAULT false,
-);
-
--- Table for reservations
-CREATE TABLE reservations (
-    reservation_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    user_id UUID REFERENCES users(user_id) ON DELETE CASCADE,
-    room_id UUID REFERENCES rooms(room_id) ON DELETE CASCADE,
-    check_in_date DATE NOT NULL,
-    check_out_date DATE NOT NULL,
-    total_price DECIMAL(10, 2) NOT NULL,
-    status VARCHAR(20) DEFAULT 'pending' CHECK (status IN ('pending', 'confirmed', 'cancelled'))
-);
+INSERT INTO hotels (name, location, description) VALUES
+    ('Sunset Resort', 'Playa del Inglés, Gran Canaria', 'Un lujoso complejo hotelero ubicado en la famosa Playa del Inglés, con vistas impresionantes al océano Atlántico.'),
+    ('Palm Oasis Maspalomas', 'Maspalomas, Gran Canaria', 'Un tranquilo oasis tropical situado en el corazón de Maspalomas, con jardines exuberantes y piscinas relucientes.'),
+    ('Seaside Grand Hotel Residencia', 'Meloneras, Gran Canaria', 'Un hotel exclusivo de estilo colonial ubicado en la prestigiosa zona de Meloneras, ofreciendo un ambiente de lujo y servicio de primera clase.'),
+    ('Lopesan Costa Meloneras Resort', 'Meloneras, Gran Canaria', 'Un resort de cinco estrellas situado frente al mar, con una amplia gama de instalaciones y servicios para unas vacaciones inolvidables.'),
+    ('Hotel Riu Palace Oasis', 'Maspalomas, Gran Canaria', 'Un elegante hotel de estilo canario rodeado de palmeras y situado a pocos pasos de las dunas de Maspalomas.'),
+    ('Cordial Mogan Playa', 'Puerto de Mogán, Gran Canaria', 'Un encantador complejo de estilo colonial rodeado de exuberantes jardines subtropicales, ideal para unas vacaciones relajantes junto al mar.'),
+    ('Radisson Blu Resort & Spa', 'Puerto de Mogán, Gran Canaria', 'Un lujoso resort frente al océano con un spa de clase mundial y una amplia gama de actividades para toda la familia.'),
+    ('Lopesan Baobab Resort', 'Meloneras, Gran Canaria', 'Un resort de lujo inspirado en África, con impresionantes piscinas, exuberantes jardines y una variedad de restaurantes temáticos.'),
+    ('Gloria Palace Amadores Thalasso & Hotel', 'Puerto Rico, Gran Canaria', 'Un hotel de bienestar y thalasso con vistas panorámicas al océano Atlántico, ideal para unas vacaciones de relax y rejuvenecimiento.'),
+    ('IFA F

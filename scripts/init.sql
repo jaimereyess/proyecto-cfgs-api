@@ -31,7 +31,7 @@ CREATE TABLE rooms (
     has_air_conditioning BOOLEAN DEFAULT false,
     has_terrace BOOLEAN DEFAULT false, 
     has_tv BOOLEAN DEFAULT false, 
-    has_wifi BOOLEAN DEFAULT false,
+    has_wifi BOOLEAN DEFAULT false
 );
 
 -- Table for reservations

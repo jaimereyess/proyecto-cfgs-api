@@ -5,6 +5,10 @@ import { HotelModule } from './hotel/hotel.module'
 import { Hotels } from './hotel/entities/hotel.entity'
 import { RoomModule } from './room/room.module'
 import { Room } from './room/entities/room.entity'
+import { ReservationModule } from './reservation/reservation.module'
+import { Reservation } from './reservation/entities/reservation.entity'
+import { UserModule } from './user/user.module'
+import { User } from './user/entities/user.entity'
 
 @Module({
   imports: [
@@ -23,13 +27,15 @@ import { Room } from './room/entities/room.entity'
         connection: {
           options: `project=${configService.get<string>('ENDPOINT_ID')}`,
         },
-        entities: [Hotels, Room],
+        entities: [Hotels, Room, Reservation, User],
         synchronize: false,
       }),
       inject: [ConfigService],
     }),
     HotelModule,
     RoomModule,
+    ReservationModule,
+    UserModule,
   ],
   controllers: [],
   providers: [],
