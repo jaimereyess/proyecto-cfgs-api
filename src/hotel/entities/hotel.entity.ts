@@ -14,6 +14,9 @@ export class Hotels {
   @Column({ length: 1000 })
   description: string
 
+  @Column('simple-array')
+  images: string[]
+
   @OneToMany(() => Room, (room) => room.hotel)
   rooms: Room[]
 }

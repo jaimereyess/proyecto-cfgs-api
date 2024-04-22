@@ -18,7 +18,8 @@ CREATE TABLE hotels (
     hotel_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     name VARCHAR(100) NOT NULL,
     location VARCHAR(100) NOT NULL,
-    description TEXT
+    description TEXT,
+    images TEXT[] DEFAULT ARRAY[]::TEXT[]
 );
 
 -- Table for rooms
@@ -31,7 +32,7 @@ CREATE TABLE rooms (
     has_air_conditioning BOOLEAN DEFAULT false,
     has_terrace BOOLEAN DEFAULT false, 
     has_tv BOOLEAN DEFAULT false, 
-    has_wifi BOOLEAN DEFAULT false
+    has_wifi BOOLEAN DEFAULT false,
 );
 
 -- Table for reservations

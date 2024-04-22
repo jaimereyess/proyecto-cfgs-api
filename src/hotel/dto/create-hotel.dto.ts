@@ -1,4 +1,10 @@
-import { IsNotEmpty, IsString, MaxLength } from 'class-validator'
+import {
+  IsNotEmpty,
+  IsString,
+  MaxLength,
+  IsArray,
+  ArrayNotEmpty,
+} from 'class-validator'
 
 export class CreateHotelDto {
   @IsString()
@@ -12,7 +18,11 @@ export class CreateHotelDto {
   location: string
 
   @IsString()
-  @MaxLength(100, { message: 'Location is too long' })
+  @MaxLength(100, { message: 'Description is too long' })
   @IsNotEmpty()
   description: string
+
+  @IsArray()
+  @ArrayNotEmpty({ message: 'Amenities must not be empty' })
+  images: string[]
 }
