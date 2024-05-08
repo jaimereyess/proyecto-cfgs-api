@@ -9,6 +9,8 @@ import { ReservationModule } from './reservation/reservation.module'
 import { Reservation } from './reservation/entities/reservation.entity'
 import { UserModule } from './user/user.module'
 import { User } from './user/entities/user.entity'
+import { FlightsModule } from './flights/flights.module'
+import { Flight } from './flights/entities/flight.entity'
 
 @Module({
   imports: [
@@ -27,7 +29,7 @@ import { User } from './user/entities/user.entity'
         connection: {
           options: `project=${configService.get<string>('ENDPOINT_ID')}`,
         },
-        entities: [Hotels, Room, Reservation, User],
+        entities: [Hotels, Room, Reservation, User, Flight],
         synchronize: false,
       }),
       inject: [ConfigService],
@@ -36,6 +38,7 @@ import { User } from './user/entities/user.entity'
     RoomModule,
     ReservationModule,
     UserModule,
+    FlightsModule,
   ],
   controllers: [],
   providers: [],
