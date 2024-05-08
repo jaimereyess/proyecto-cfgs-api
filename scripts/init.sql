@@ -21,7 +21,7 @@ CREATE TABLE hotels (
     description TEXT,
     images TEXT[] DEFAULT ARRAY[]::TEXT[],
     breakfast_included BOOLEAN DEFAULT false,
-    starts INT NOT NULL
+    stars INT NOT NULL
 );
 
 -- Table for rooms
@@ -46,4 +46,40 @@ CREATE TABLE reservations (
     check_out_date DATE NOT NULL,
     total_price DECIMAL(10, 2) NOT NULL,
     status VARCHAR(20) DEFAULT 'pending' CHECK (status IN ('pending', 'confirmed', 'cancelled'))
+);
+
+-- Insert data for car renting
+CREATE TABLE cars (
+    car_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    brand VARCHAR(50) NOT NULL,
+    model VARCHAR(50) NOT NULL,
+    year INT NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    description TEXT,
+    images TEXT[] DEFAULT ARRAY[]::TEXT[],
+    has_air_conditioning BOOLEAN DEFAULT false,
+    has_gps BOOLEAN DEFAULT false,
+    has_automatic_transmission BOOLEAN DEFAULT false
+);
+
+-- Insert data for actities
+CREATE TABLE activities (
+    activity_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    name VARCHAR(100) NOT NULL,
+    location VARCHAR(100) NOT NULL,
+    country VARCHAR(100) NOT NULL, 
+    description TEXT,
+    images TEXT[] DEFAULT ARRAY[]::TEXT[],
+    price DECIMAL(10, 2) NOT NULL
+);
+
+-- Insert data for flights
+CREATE TABLE flights (
+    flight_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    airline VARCHAR(50) NOT NULL,
+    departure_airport VARCHAR(50) NOT NULL,
+    arrival_airport VARCHAR(50) NOT NULL,
+    departure_date TIMESTAMP NOT NULL,
+    arrival_date TIMESTAMP NOT NULL,
+    price DECIMAL(10, 2) NOT NULL
 );

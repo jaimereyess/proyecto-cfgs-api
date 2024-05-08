@@ -4,6 +4,9 @@ import {
   MaxLength,
   IsArray,
   ArrayNotEmpty,
+  IsBoolean,
+  IsInt,
+  Min,
 } from 'class-validator'
 
 export class CreateHotelDto {
@@ -23,6 +26,13 @@ export class CreateHotelDto {
   description: string
 
   @IsArray()
-  @ArrayNotEmpty({ message: 'Amenities must not be empty' })
+  @ArrayNotEmpty({ message: 'Images must not be empty' })
   images: string[]
+
+  @IsBoolean()
+  breakfast_included: boolean
+
+  @IsInt()
+  @Min(1, { message: 'Stars must be at least 1' })
+  stars: number
 }

@@ -17,6 +17,12 @@ export class Hotels {
   @Column('simple-array')
   images: string[]
 
+  @Column()
+  breakfast_included: boolean
+
+  @Column()
+  stars: number
+
   @OneToMany(() => Room, (room) => room.hotel)
   rooms: Room[]
 }
