@@ -14,6 +14,9 @@ $ npm install
 - /hotel
 - /rooms
 - /reservations
+- /cars
+- /flights
+- /activities
 
 ## Running the app
 
