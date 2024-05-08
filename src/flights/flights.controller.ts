@@ -27,16 +27,16 @@ export class FlightsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.flightsService.findOne(+id)
+    return this.flightsService.findOne(id)
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateFlightDto: UpdateFlightDto) {
-    return this.flightsService.update(+id, updateFlightDto)
+    return this.flightsService.update(id, updateFlightDto)
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.flightsService.remove(+id)
+    return this.flightsService.remove(id)
   }
 }

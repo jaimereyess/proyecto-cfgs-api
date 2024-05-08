@@ -21,17 +21,17 @@ export class FlightsService {
     return this.flightRepository.find()
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     const oprions: FindOneOptions<Flight> = { where: { flight_id: id } }
     return this.flightRepository.findOne(oprions)
   }
 
-  async update(id: number, updateFlightDto: UpdateFlightDto) {
+  async update(id: string, updateFlightDto: UpdateFlightDto) {
     await this.flightRepository.update(id, updateFlightDto)
     return this.findOne(id)
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     await this.flightRepository.delete(id)
     return { deleted: true }
   }

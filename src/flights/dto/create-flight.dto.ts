@@ -1,12 +1,3 @@
-/*CREATE TABLE flights (
-    flight_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    airline VARCHAR(50) NOT NULL,
-    departure_airport VARCHAR(50) NOT NULL,
-    arrival_airport VARCHAR(50) NOT NULL,
-    departure_date TIMESTAMP NOT NULL,
-    arrival_date TIMESTAMP NOT NULL,
-    price DECIMAL(10, 2) NOT NULL
-);*/
 import { IsNotEmpty, IsString, MaxLength, IsInt, Min } from 'class-validator'
 
 export class CreateFlightDto {

@@ -3,7 +3,7 @@ import { Entity, Column, PrimaryColumn } from 'typeorm'
 @Entity({ name: 'flights' })
 export class Flight {
   @PrimaryColumn()
-  flight_id: number
+  flight_id: string
 
   @Column({ length: 50 })
   airline: string
