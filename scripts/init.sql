@@ -19,7 +19,9 @@ CREATE TABLE hotels (
     name VARCHAR(100) NOT NULL,
     location VARCHAR(100) NOT NULL,
     description TEXT,
-    images TEXT[] DEFAULT ARRAY[]::TEXT[]
+    images TEXT[] DEFAULT ARRAY[]::TEXT[],
+    breakfast_included BOOLEAN DEFAULT false,
+    starts INT NOT NULL
 );
 
 -- Table for rooms
