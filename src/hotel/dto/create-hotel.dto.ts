@@ -7,6 +7,8 @@ import {
   IsBoolean,
   IsInt,
   Min,
+  IsDecimal,
+  Max,
 } from 'class-validator'
 
 export class CreateHotelDto {
@@ -34,5 +36,14 @@ export class CreateHotelDto {
 
   @IsInt()
   @Min(1, { message: 'Stars must be at least 1' })
+  @Max(5, { message: 'Stars must be at most 5' })
   stars: number
+
+  @IsDecimal(
+    { decimal_digits: '1', force_decimal: false },
+    { message: 'Rating must have exactly one decimal' },
+  )
+  @Min(0, { message: 'Rating must be at least 1' })
+  @Max(10, { message: 'Rating must be at most 10' })
+  rating: number
 }

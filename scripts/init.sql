@@ -21,7 +21,8 @@ CREATE TABLE hotels (
     description TEXT,
     images TEXT[] DEFAULT ARRAY[]::TEXT[],
     breakfast_included BOOLEAN DEFAULT false,
-    stars INT NOT NULL
+    stars INT NOT NULL,
+    rating DECIMAL(2, 1) NOT NULL
 );
 
 -- Table for rooms

@@ -30,6 +30,11 @@ export class HotelController {
     return this.hotelService.findOne(id)
   }
 
+  @Get('name/:name')
+  findByName(@Param('name') name: string) {
+    return this.hotelService.findByName(name)
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateHotelDto: UpdateHotelDto) {
     return this.hotelService.update(id, updateHotelDto)

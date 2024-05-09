@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { Repository } from 'typeorm'
+import { Repository, ILike } from 'typeorm'
 import { CreateHotelDto } from './dto/create-hotel.dto'
 import { UpdateHotelDto } from './dto/update-hotel.dto'
 import { Hotels } from './entities/hotel.entity'
@@ -25,6 +25,15 @@ export class HotelService {
   async findOne(id: string) {
     const options: FindOneOptions<Hotels> = { where: { hotel_id: id } }
     return this.hotelRepository.findOne(options)
+  }
+
+  async findByName(name: string): Promise<Hotels[]> {
+    const normalizedSearchTerm = name.toLowerCase()
+    return this.hotelRepository.find({
+      where: {
+        name: ILike(`%${normalizedSearchTerm}%`),
+      },
+    })
   }
 
   async update(id: string, updateHotelDto: UpdateHotelDto) {

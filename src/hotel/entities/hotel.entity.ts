@@ -23,6 +23,9 @@ export class Hotels {
   @Column()
   stars: number
 
+  @Column('decimal', { precision: 2, scale: 2 }) //
+  rating: number
+
   @OneToMany(() => Room, (room) => room.hotel)
   rooms: Room[]
 }
