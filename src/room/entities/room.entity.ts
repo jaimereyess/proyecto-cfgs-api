@@ -9,15 +9,6 @@ import {
 import { Hotels } from 'src/hotel/entities/hotel.entity'
 import { Reservation } from 'src/reservation/entities/reservation.entity'
 
-/*
-@IsNumber()
-  @IsNotEmpty()
-  free_quantity: number
-
-  @IsNumber()
-  @IsNotEmpty()
-  max_guests: number
-*/
 @Entity({ name: 'rooms' })
 export class Room {
   @PrimaryGeneratedColumn('uuid')
@@ -29,6 +20,9 @@ export class Room {
 
   @OneToMany(() => Reservation, (reservation) => reservation.room)
   reservations: Reservation[]
+
+  @Column()
+  hotel_id: string
 
   @Column()
   quantity: number

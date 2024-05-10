@@ -20,7 +20,13 @@ export class RoomService {
   }
 
   async findOneRoom(id: string) {
-    return this.roomRepository.findOne({ where: { room_id: id } })
+    const options = { where: { room_id: id } }
+    return this.roomRepository.findOne(options)
+  }
+
+  async findRoomsByHotel(hotelId: string) {
+    const options = { where: { hotel_id: hotelId } }
+    return this.roomRepository.find(options)
   }
 
   async updateRoom(id: string, updateRoomDto: CreateRoomDto) {

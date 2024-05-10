@@ -30,6 +30,11 @@ export class RoomController {
     return this.roomService.findOneRoom(id)
   }
 
+  @Get('hotel/:hotelId')
+  findRoomsByHotel(@Param('hotelId') hotelId: string) {
+    return this.roomService.findRoomsByHotel(hotelId)
+  }
+
   @Patch(':id')
   updateRoom(@Param('id') id: string, @Body() updateRoomDto: CreateRoomDto) {
     return this.roomService.updateRoom(id, updateRoomDto)

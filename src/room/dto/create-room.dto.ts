@@ -1,9 +1,12 @@
-import { IsNotEmpty, IsNumber, IsDecimal, IsBoolean } from 'class-validator'
+import {
+  IsNotEmpty,
+  IsNumber,
+  IsDecimal,
+  IsBoolean,
+  IsString,
+} from 'class-validator'
 
 export class CreateRoomDto {
-  @IsNotEmpty()
-  hotel_id: string
-
   @IsNumber()
   @IsNotEmpty()
   quantity: number
@@ -20,6 +23,7 @@ export class CreateRoomDto {
   @IsNotEmpty()
   price: number
 
+  @IsString()
   description: string
 
   @IsBoolean()
