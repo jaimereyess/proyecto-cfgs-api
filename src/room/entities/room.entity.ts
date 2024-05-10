@@ -9,6 +9,15 @@ import {
 import { Hotels } from 'src/hotel/entities/hotel.entity'
 import { Reservation } from 'src/reservation/entities/reservation.entity'
 
+/*
+@IsNumber()
+  @IsNotEmpty()
+  free_quantity: number
+
+  @IsNumber()
+  @IsNotEmpty()
+  max_guests: number
+*/
 @Entity({ name: 'rooms' })
 export class Room {
   @PrimaryGeneratedColumn('uuid')
@@ -23,6 +32,12 @@ export class Room {
 
   @Column()
   quantity: number
+
+  @Column()
+  free_quantity: number
+
+  @Column()
+  max_guests: number
 
   @Column({ type: 'decimal', precision: 10, scale: 2 })
   price: number

@@ -8,6 +8,14 @@ export class CreateRoomDto {
   @IsNotEmpty()
   quantity: number
 
+  @IsNumber()
+  @IsNotEmpty()
+  free_quantity: number
+
+  @IsNumber()
+  @IsNotEmpty()
+  max_guests: number
+
   @IsDecimal()
   @IsNotEmpty()
   price: number

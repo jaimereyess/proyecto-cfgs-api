@@ -30,6 +30,8 @@ CREATE TABLE rooms (
     room_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     hotel_id UUID REFERENCES hotels(hotel_id) ON DELETE CASCADE,
     quantity INT NOT NULL,
+    free_quantity INT NOT NULL,
+    max_guests INT NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
     description TEXT,
     has_air_conditioning BOOLEAN DEFAULT false,
