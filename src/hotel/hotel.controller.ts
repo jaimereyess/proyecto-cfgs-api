@@ -35,6 +35,11 @@ export class HotelController {
     return this.hotelService.findByName(name)
   }
 
+  @Get('location/:location')
+  findByLocation(@Param('location') location: string) {
+    return this.hotelService.findByLocation(location)
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateHotelDto: UpdateHotelDto) {
     return this.hotelService.update(id, updateHotelDto)

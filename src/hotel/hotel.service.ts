@@ -36,6 +36,15 @@ export class HotelService {
     })
   }
 
+  async findByLocation(location: string): Promise<Hotels[]> {
+    const normalizedSearchTerm = location.toLowerCase()
+    return this.hotelRepository.find({
+      where: {
+        location: ILike(`%${normalizedSearchTerm}%`),
+      },
+    })
+  }
+
   async update(id: string, updateHotelDto: UpdateHotelDto) {
     await this.hotelRepository.update(id, updateHotelDto)
     return this.findOne(id)
