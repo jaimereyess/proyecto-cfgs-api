@@ -86,3 +86,10 @@ CREATE TABLE flights (
     arrival_date TIMESTAMP NOT NULL,
     price DECIMAL(10, 2) NOT NULL
 );
+
+CREATE TABLE airports (
+    airports_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    airport_code VARCHAR(10) UNIQUE NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    country VARCHAR(100) NOT NULL
+);
