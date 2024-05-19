@@ -14,7 +14,7 @@ export class Hotels {
   @Column({ length: 1000 })
   description: string
 
-  @Column('simple-array')
+  @Column('text', { array: true })
   images: string[]
 
   @Column()
